@@ -1,0 +1,14 @@
+/src
+  /app
+    /bible
+      /[abbrev]
+        /page.js  <-- 특정 성경 챕터 뷰어 페이지
+    /page.js  <-- 메인 홈 페이지
+  /components
+    ChapterList.js  <-- 장 리스트 컴포넌트
+    VerseViewer.js  <-- 구절 뷰어 컴포넌트
+  /libs
+    bible.js  <-- 데이터 로드 함수
+/public
+  en_bbe.json
+  ko_ko.json

@@ -1,0 +1,344 @@
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic Settings */
+body {
+  font-family: "Noto Serif", serif;
+  background-color: #f5f1e6;
+  color: #2c2c2c;
+  line-height: 1.6;
+  padding-top: 70px; 
+  background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Header */
+header {
+  background-color: rgba(42, 27, 20, 0.9);
+  color: #f5f1e6;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Menu Button */
+.menu-button {
+  background: none;
+  border: none;
+  color: #f5f1e6;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.menu-button:hover {
+  transform: scale(1.1);
+}
+
+/* Side Bar */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1100;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background-color: #faf8f5;
+  padding: 20px;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1200;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+  color: #2c2c2c;
+  font-family: "Noto Serif", serif;
+  font-size: 1.2rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 8px;
+  font-family: "Noto Serif", serif;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  outline: none;
+  margin-top: 5px;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(250, 248, 245, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c2c2c;
+}
+
+.container p {
+  font-size: 1rem;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.container p:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.container p strong {
+  color: #6d5840;
+}
+
+/* Modal */
+.verse-modal-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.verse-modal-fullscreen-content {
+  background-color: #faf8f5;
+  max-width: 600px;
+  width: 90%;
+  height: 80%;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.verse-modal-body {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.verse-modal-body .english-verse {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.verse-modal-body .korean-verse {
+  font-size: 1rem;
+  color: #555;
+}
+
+.verse-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.verse-modal-footer button {
+  padding: 8px 16px;
+  background-color: #6d5840;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verse-modal-footer button:hover {
+  background-color: #8f7355;
+}
+
+.verse-modal-footer button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Button for closing the modal */
+.verse-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: bold;
+  z-index: 10000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.close-button:hover {
+  transform: scale(1.1);
+}
+
+
+/* Responsive(Mobile) */
+/* Modile(Max 768px width) */
+
+@media (max-width: 768px) {
+  /* 드롭다운 컨테이너 */
+  #book-select-container, #chapter-select-container {
+    margin-bottom: 20px; /* 간격 증가 */
+  }
+
+  /* 드롭다운 라벨 텍스트 */
+  .label-text {
+    font-size: 1.2rem; /* 라벨 글씨 크기 증가 */
+    margin-bottom: 10px; /* 라벨과 드롭다운 간격 증가 */
+  }
+
+  /* 드롭다운 (select) */
+  select {
+    width: 100%; /* 드롭다운 너비를 전체로 */
+    font-size: 1.2rem; /* 글씨 크기 증가 */
+    padding: 12px; /* 드롭다운 높이 증가 */
+    border-radius: 8px; /* 둥근 모서리 */
+    border: 2px solid #ccc; /* 테두리 두께 증가 */
+  }
+
+  /* 드롭다운 아이템 */
+  option {
+    font-size: 1.2rem; /* 선택지 글씨 크기 증가 */
+    padding: 10px; /* 아이템 간격 증가 */
+  }
+}
+
+
+/* Responsive (Pad) */
+/* Pad(Max 1024px) */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container h2 {
+    font-size: 1.8rem;
+  }
+
+  .container p {
+    font-size: 1.3rem;
+  }
+
+  .verse-modal-body .english-verse {
+    font-size: 1.6rem;
+  }
+
+  .verse-modal-body .korean-verse {
+    font-size: 1.4rem;
+  }
+
+  .verse-modal-footer button {
+    font-size: 1.3rem;
+  }
+}
+
+/* Info Modal Styles */
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.info-modal-content {
+  background-color: #faf8f5;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  max-height: 80%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow-y: auto;
+}
+
+.info-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.info-modal-header h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+}
+
+.info-modal-body p {
+  margin: 15px 0;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.info-modal-body a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.info-modal-body a:hover {
+  text-decoration: underline;
+}
