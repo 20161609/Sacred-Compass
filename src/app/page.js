@@ -1,5 +1,4 @@
 // src/app/page.js
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -11,8 +10,8 @@ export default function Home() {
   const [bibleData, setBibleData] = useState([]);
   const [books, setBooks] = useState([]);
 
-  const [selectedBook, setSelectedBook] = useState("gn"); // 기본값: 창세기
-  const [selectedChapter, setSelectedChapter] = useState(1); // 기본값: 1장
+  const [selectedBook, setSelectedBook] = useState("gn"); // Default: Genesis
+  const [selectedChapter, setSelectedChapter] = useState(1); // Default: 1st
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
@@ -66,18 +65,27 @@ export default function Home() {
     closeSidebar();
   };
 
+  // Book/Chapter selection handlers
   const handleBookChange = (e) => {
     const newBook = e.target.value;
     setSelectedBook(newBook);
-    setSelectedChapter(1); // Initialize chapter to 1 when book changes
+    setSelectedChapter(1); 
+
+    // When the book changes, reset the verseIndex to 0
+    setCurrentVerseIndex(0);
   };
 
   const handleChapterChange = (e) => {
     const newChapter = parseInt(e.target.value, 10);
     setSelectedChapter(newChapter);
+
+    // When the chapter changes, reset the verseIndex to 0
+    setCurrentVerseIndex(0);
   };
 
+  // Handler for clicking on a verse
   const handleVerseClick = (index) => {
+    // Setting the verseIndex
     setCurrentVerseIndex(index);
     setModalOpen(true);
   };
@@ -89,10 +97,12 @@ export default function Home() {
         <button className="menu-button" onClick={toggleSidebar}>
           ☰
         </button>
-        <h1 
+        <h1
           style={{ fontSize: "1.2rem", marginLeft: "10px", cursor: "pointer" }}
           onClick={() => setInfoModalOpen(true)}
-          >Sacred Compass</h1>
+        >
+          Sacred Compass
+        </h1>
       </header>
 
       {/* Sidebar */}
@@ -164,10 +174,12 @@ export default function Home() {
       {/* Main Container */}
       <div className="container">
         <h2>
-          {books.find((book) => book.abbrev === selectedBook)?.name} Chapter {selectedChapter}
+          {books.find((book) => book.abbrev === selectedBook)?.name} Chapter{" "}
+          {selectedChapter}
         </h2>
         <div>
-          {bibleData.find((b) => b.abbrev === selectedBook)
+          {bibleData
+            .find((b) => b.abbrev === selectedBook)
             ?.chapters[selectedChapter - 1]?.map((verse, idx) => (
               <motion.p
                 key={idx}

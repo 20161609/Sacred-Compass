@@ -1,5 +1,4 @@
 // src/app/components/VerseModal.js
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -15,6 +14,7 @@ export default function VerseModal({
 }) {
   const [englishBible, setEnglishBible] = useState([]);
   const [koreanBible, setKoreanBible] = useState([]);
+  // Mannage the verseIndex received from the parent component as an internal state
   const [currentVerse, setCurrentVerse] = useState(verseIndex);
 
   useEffect(() => {
@@ -31,6 +31,11 @@ export default function VerseModal({
     fetchBibleData();
   }, []);
 
+  // Reflect the verseIndex change to the internal state of the modal
+  useEffect(() => {
+    setCurrentVerse(verseIndex);
+  }, [verseIndex]);
+
   if (!isOpen || !englishBible.length || !koreanBible.length) return null;
 
   const englishBook = englishBible.find((book) => book.abbrev === abbrev);
@@ -39,8 +44,8 @@ export default function VerseModal({
   const koreanVerses = koreanBook?.chapters[chapter - 1] || [];
 
   const verseCount = englishVerses.length;
-  const currentEnglishVerse = englishVerses[currentVerse];
-  const currentKoreanVerse = koreanVerses[currentVerse];
+  const currentEnglishVerse = englishVerses[currentVerse] || "";
+  const currentKoreanVerse = koreanVerses[currentVerse] || "";
 
   const handleNext = () => {
     if (currentVerse < verseCount - 1) {
@@ -84,13 +89,23 @@ export default function VerseModal({
               <h2>
                 {englishBook?.name} {chapter}:{currentVerse + 1}
               </h2>
-              <div className="close-button" onClick={onClose} style={{ cursor: "pointer", color: "red", fontWeight: "bold" }}>
+              <div
+                className="close-button"
+                onClick={onClose}
+                style={{
+                  cursor: "pointer",
+                  color: "red",
+                  fontWeight: "bold",
+                }}
+              >
                 Close
               </div>
             </div>
 
             <div className="verse-modal-body">
-              <p className="english-verse"><strong>{currentEnglishVerse}</strong></p>
+              <p className="english-verse">
+                <strong>{currentEnglishVerse}</strong>
+              </p>
               <p className="korean-verse">{currentKoreanVerse}</p>
             </div>
 
